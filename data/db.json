@@ -1,0 +1,17 @@
+{
+    "recipy": [
+        {
+            "title": "Pie",
+            "ingredients": ["mashrooms", "sugra"],
+            "method": "Pui sare",
+            "time": "30"
+        },
+        {
+            "title": "Pizza",
+            "ingredients": ["mashrooms", "sugra"],
+            "method": "Pui sare",
+            "time": "20"
+        }
+        
+    ]
+}
