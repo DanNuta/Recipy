@@ -1,16 +1,22 @@
 import './App.css';
 import {BrowserRouter,Routes, Route} from "react-router-dom";
 import useFetch from './hooks/useFetch';
+import NavBar from './components/NavBar';
+import Recipe from './pages/Recipe';
+import Home from "./pages/Home"
 
 function App() {
 
-  const {data} = useFetch("http://localhost:3000/recipy")
   return (
     <BrowserRouter>
 
-        <div className="App">
-          <h1>Hello</h1>
-        </div>
+      <NavBar/>
+        
+        <Routes>
+          <Route path='/' element={<Home/>}></Route>
+          <Route path='/search'></Route>
+          <Route path='/recipe' element={<Recipe/>}></Route>
+        </Routes>
     
     </BrowserRouter>
   );

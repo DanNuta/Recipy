@@ -11,16 +11,21 @@ const useFetch = (url) => {
     useEffect(() =>{
 
         const fetchData = async () =>{
+            setIsLoading(true)
            try{
             const data = await fetch(url);
-            const json = await data.json()
+            const json = await data.json();
 
             if(!data.ok){
                 throw new Error()
             }
-            setData(json)
+
+            setData(json);
+            setError(null);
+            setIsLoading(false);
 
            }catch(e){
+               setError("Nu se poate adauga date");
 
            }
         }
