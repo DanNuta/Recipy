@@ -1,4 +1,5 @@
 import useFetch from "../hooks/useFetch";
+import Card from "../pages/Card";
 
 
 const Home = () => {
@@ -11,7 +12,7 @@ const Home = () => {
             {isLoading && <h1>Loading...</h1>}
             {error && <h1>{error}</h1>}
             {data.map(item => (
-                <Card/>
+                <Card item={item}/>
             ))}
         </div>
      );

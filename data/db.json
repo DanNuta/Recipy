@@ -4,13 +4,15 @@
             "title": "Pie",
             "ingredients": ["mashrooms", "sugra"],
             "method": "Pui sare",
-            "time": "30"
+            "time": "30",
+            "id": "1"
         },
         {
             "title": "Pizza",
             "ingredients": ["mashrooms", "sugra"],
             "method": "Pui sare",
-            "time": "20"
+            "time": "20",
+            "id": "2"
         }
         
     ]
