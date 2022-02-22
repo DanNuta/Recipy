@@ -1,4 +1,6 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
+import useFetch from "../hooks/useFetch";
+import { useNavigate } from "react-router-dom";
 
 const Recipe = () => {
 
@@ -8,7 +10,11 @@ const Recipe = () => {
     const [curentIngredient, setCurentIncredient] = useState("")
     const [ingredient, setIngredient] = useState([]);
     const [method, setMethod] = useState("");
-    const [time, setTime] = useState("")
+    const [time, setTime] = useState("");
+
+    const navigate = useNavigate();
+
+    const {postData, data, error} = useFetch("http://localhost:3000/recipy", "POST")
 
 
     const titleForm = (e) =>{
@@ -16,15 +22,18 @@ const Recipe = () => {
     };
 
 
+   
+
     
-    const ingredinetsForm = (e) =>{
-        setCurentIncredient(e.target.value)
-    };
+
+
     
     const btn = (e) =>{
         e.preventDefault();
-        setIngredient([...ingredient, curentIngredient])
-        setCurentIncredient("")
+
+        const ing = curentIngredient.trim();
+        setIngredient([...ingredient, ing])
+        setCurentIncredient("");
     };
 
 
@@ -43,15 +52,20 @@ const Recipe = () => {
     
     const submit = (e) => {
         e.preventDefault();
+        setIngredient([...ingredient, curentIngredient])
         const recipie = {
             title: title,
-            ingredient: ingredient,
+            ingredient: ingredient || curentIngredient,
             method: method,
             time: time
         }
-    
-    
-        console.log(recipie)
+
+        postData({title, ingredient, method, time})
+        setTitle("")
+        setIngredient("");
+        setMethod("");
+        setTime("");
+        setCurentIncredient("")
     }
 
 
@@ -66,19 +80,19 @@ const Recipe = () => {
              <h2>Add a New Recipe</h2>
 
              <label htmlFor="title">Recipy Title</label>
-             <input onChange={titleForm} type="text" id="title" />
+             <input onChange={titleForm} type="text" value={title} id="title" />
 
              <label htmlFor="Ingredients">Ingredients</label>
-             <input onChange={ingredinetsForm} type="text" id="Ingredients" value={curentIngredient}  />
+             <input onChange={(e) => setCurentIncredient(e.target.value) } type="text" value={curentIngredient} id="Ingredients" value={curentIngredient}  />
              <button onClick={btn}>Add</button>
 
              <label htmlFor="method">Method</label>
-             <input onChange={methodForm} type="text" id="method"/>
+             <input onChange={methodForm} value={method} type="text" id="method"/>
 
              <label htmlFor="time">Time</label>
-             <input onChange={timeForm} type="number" id="time" />
+             <input onChange={timeForm} value={time} type="number" id="time" />
 
-             <button>Submit</button>
+             <button onClick>Submit</button>
          </form>
      );
 }

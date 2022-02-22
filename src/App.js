@@ -22,7 +22,7 @@ function App() {
       <NavBar/>
         
         <Routes>
-          <Route path='/*' element={<Home/>}></Route>
+          <Route path='/' element={<Home/>}></Route>
           <Route path='/search' element={<Search data={data}/>}></Route>
           <Route path='/recipe' element={<Recipe/>}></Route>
           <Route path='cook/:id' element={<CardElement/>}></Route>

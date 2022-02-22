@@ -1,19 +1,66 @@
 {
-    "recipy": [
-        {
-            "title": "Pie",
-            "ingredients": ["mashrooms", "sugra"],
-            "method": "Pui sare",
-            "time": "30",
-            "id": "1"
-        },
-        {
-            "title": "Pizza",
-            "ingredients": ["mashrooms", "sugra"],
-            "method": "Pui sare",
-            "time": "20",
-            "id": "2"
-        }
-        
-    ]
+  "recipy": [
+    {
+      "title": "Pie",
+      "ingredients": [
+        "mashrooms",
+        "sugra"
+      ],
+      "method": "Pui sare",
+      "time": "30",
+      "id": "1"
+    },
+    {
+      "title": "Pizza",
+      "ingredients": [
+        "mashrooms",
+        "sugra"
+      ],
+      "method": "Pui sare",
+      "time": "20",
+      "id": "2"
+    },
+    {
+      "title": "cxzcxzc",
+      "ingredient": [
+        "xcxcxz"
+      ],
+      "method": "cxcscsa",
+      "time": "12",
+      "id": "UniMl_Z"
+    },
+    {
+      "title": "da",
+      "ingredient": [
+        "cx cxvcx"
+      ],
+      "method": "cxcc",
+      "time": "23",
+      "id": "hv6KDW4"
+    },
+    {
+      "title": "cxcxvcx",
+      "ingredient": [],
+      "method": "gghgfj",
+      "time": "45",
+      "id": "4urUxla"
+    },
+    {
+      "title": " vcbvcbn",
+      "ingredient": [],
+      "method": "dfghgf",
+      "time": "34",
+      "id": "SssUaof"
+    },
+    {
+      "title": "fdgr",
+      "ingredient": [
+        "dgdgdf",
+        "dfdfdgfd"
+      ],
+      "method": "gfdgdf",
+      "time": "23",
+      "id": "vxm7DO8"
+    }
+  ]
 }

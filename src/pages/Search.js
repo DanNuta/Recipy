@@ -18,7 +18,7 @@ const Search = (props) => {
         </form>
      );
 
-     return {search}
+     
 }
  
 export default Search;
