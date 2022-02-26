@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {projectFirestore} from "../firebase/config";
 import Card from "../pages/Card";
 
@@ -13,7 +13,20 @@ const Home = () => {
     useEffect(() =>{
         setIsLoading(true);
 
-        projectFirestore.collection
+        projectFirestore.collection("recipes").get().then((res) => {
+            if(res.empty){
+                setIsLoading(false)
+                setError("Nu exista date de afisat")
+            }else{
+                let counter = [];
+                res.docs.forEach(item =>{
+                    counter.push({id: item.id, ...item.data()})
+                })
+                setIsLoading(false)
+                setData(counter)
+
+            }
+        })
 
     }, [])
 
