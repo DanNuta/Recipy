@@ -2,6 +2,8 @@ import {Link, Routes, Route} from "react-router-dom";
 import CardElement from "./CardElement";
 import { useContext, useState, useEffect } from "react";
 import {ThemeColor} from "../context/ThemeColor";
+import {projectFirestore} from "../firebase/config";
+
 
 const Card = ({item}) => {
 
@@ -20,6 +22,12 @@ const Card = ({item}) => {
         
     }, [light])
 
+
+    const deleteElement = (id) =>{
+        projectFirestore.collection("recipes").doc(id).delete()
+
+    }
+
     
 
    
@@ -35,6 +43,7 @@ const Card = ({item}) => {
             <p>{item.time} min</p>
             <Link to={`cook/${item.id}`}><button>Cook this</button></Link>
             <button onClick={() => setLight(!light)}>DarkMode</button>
+            <button onClick={() => deleteElement(item.id)}>Delete</button>
         </div>
      );
 }

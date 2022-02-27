@@ -1,9 +1,13 @@
 import {useState, useEffect} from "react";
 import useFetch from "../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
+import {projectFirestore} from "../firebase/config";
+
 
 const Recipe = () => {
 
+
+    const location = useNavigate()
 
 
     const [title, setTitle] = useState("");
@@ -12,9 +16,8 @@ const Recipe = () => {
     const [method, setMethod] = useState("");
     const [time, setTime] = useState("");
 
-    const navigate = useNavigate();
+    
 
-    const {postData, data, error} = useFetch("http://localhost:3000/recipy", "POST")
 
 
     const titleForm = (e) =>{
@@ -50,7 +53,7 @@ const Recipe = () => {
 
     
     
-    const submit = (e) => {
+    const submit = async (e) => {
         e.preventDefault();
         setIngredient([...ingredient, curentIngredient])
         const recipie = {
@@ -60,7 +63,15 @@ const Recipe = () => {
             time: time
         }
 
-        postData({title, ingredient, method, time})
+        try{
+            await projectFirestore.collection("recipes").add(recipie)
+            location("/")
+
+
+        }catch(err){
+            console.log(err)
+
+        }
         setTitle("")
         setIngredient("");
         setMethod("");

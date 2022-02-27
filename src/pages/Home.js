@@ -13,7 +13,7 @@ const Home = () => {
     useEffect(() =>{
         setIsLoading(true);
 
-        projectFirestore.collection("recipes").get().then((res) => {
+       const unsub = projectFirestore.collection("recipes").onSnapshot((res) => {
             if(res.empty){
                 setIsLoading(false)
                 setError("Nu exista date de afisat")
@@ -26,7 +26,12 @@ const Home = () => {
                 setData(counter)
 
             }
+        }, (err) =>{
+            setIsLoading(false)
+            setError(err.message)
         })
+
+        return () => unsub()
 
     }, [])
 
